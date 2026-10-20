@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de Inventario</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #0f172a; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+    nav button { background: #0284c7; color: white; border: none; padding: 8px 15px; margin-left: 5px; border-radius: 4px; cursor: pointer; }
+    main { padding: 20px; max-width: 900px; margin: auto; }
+    .modulo { display: none; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .activo { display: block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f1f5f9; }
+    input, select { width: 100%; padding: 8px; margin: 5px 0 15px; box-sizing: border-box; }
+    .btn { background: #0284c7; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Gestión de Inventario</h2>
+    <nav>
+      <button onclick="ver('inicio')">Inicio</button>
+      <button onclick="ver('almacen')">Almacén</button>
+
+      <button onclick="ver('entradas')">Entradas/Salidas</button>
+      <button onclick="ver('proveedores')">Proveedores</button>
+    </nav>
+  </header>
+  <main>
+    <div id="inicio" class="modulo activo">
+      <h1>Sistema de Control de Inventario</h1>
+      <p>Supervisión de existencias, entradas y salidas de almacén en tiempo real.</p>
+    </div>
+    <div id="almacen" class="modulo">
+      <h2>Existencias en Almacén</h2>
+      <table>
+        <tr><th>SKU</th><th>Artículo</th><th>Categoría</th><th>Existencia</th></tr>
+        <tr><td>INV-101</td><td>Lámpara LED</td><td>Iluminación</td><td>45</td></tr>
+        <tr><td>INV-102</td><td>Cable UTP Cat6</td><td>Redes</td><td>120 mts</td></tr>
+      </table>
+    </div>
+    <div id="entradas" class="modulo">
+      <h2>Movimiento de Inventario</h2>
+      <form onsubmit="alert('Movimiento Registrado'); return false;">
+        <label>Tipo de Movimiento:</label><select><option>Entrada (Compra)</option><option>Salida (Despacho)</option></select>
+        <label>Artículo:</label><select><option>Lámpara LED</option><option>Cable UTP Cat6</option></select>
+        <label>Cantidad:</label><input type="number" placeholder="10" required>
+        <button class="btn">Registrar Movimiento</button>
+      </form>
+    </div>
+    <div id="proveedores" class="modulo">
+      <h2>Directorio de Proveedores</h2>
+      <table>
+        <tr><th>RUC</th><th>Empresa</th><th>Contacto</th></tr>
+        <tr><td>J0310000123</td><td>Suministros Globales S.A.</td><td>Carlos Ruiz (+505 8555-4444)</td></tr>
+      </table>
+    </div>
+  </main>
+  <script>
+    function ver(id) {
+      document.querySelectorAll('.modulo').forEach(m => m.classList.remove('activo'));
+      document.getElementById(id).classList.add('activo');
+    }
+  </script>
+</body>
+</html>
